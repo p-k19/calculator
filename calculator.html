@@ -1,0 +1,143 @@
+<!doctype html>
+<!DOCTYPE html>
+<html>
+<head>
+	<title>My Calci</title>
+
+<!---Bootstrap Stuff------->
+<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+
+	<!-- for styling -->
+<style>
+.title{
+border-radius: 25px;
+margin-bottom: 10px;
+text-align:center;
+width: 210px;
+color:#ff4456;
+border: solid black 1px;
+}
+input[type="button"]
+{
+border-radius: 10px;
+background-color:#ff4456;
+color: black;
+border-color:#ff4456 ;
+width:100px;
+}
+input[type="text"]
+{
+border-radius: 10px;
+text-align: right;
+background-color:white;
+border-color: black ;
+width:100%
+}
+
+</style>
+
+
+</head>
+<body>
+	<center>
+	<!-- create table -->
+<body style=" background-color: #cccccc;">
+	<center>
+	<div class="container-fluid">
+	
+<div class = title >Px.cal1613210123</div>
+<table border="2.5" style="height: 50vh; border-radius: 25px;background-color:white;">
+<tr>
+<td><input type="button" class="btn btn-success" value="c" onclick="operation('c')"/> </td>
+<td colspan="3"><input type="text" id="edu"/></td>
+<!-- clr() function will call clr to clear all value -->
+</tr>
+<tr>
+<!-- creating buttons and assigning values-->
+<td><input type="button"class="btn btn-success" value="+" onclick="operation('+')"/> </td>
+<td><input type="button" class="btn btn-success" value="1" onclick="calculate('1')"/> </td>
+<td><input type="button" class="btn btn-success" value="2" onclick="calculate('2')"/> </td>
+<td><input type="button"class="btn btn-success" value="3" onclick="calculate('3')"/> </td>
+</tr>
+<tr>
+<td><input type="button" class="btn btn-success"  value="-" onclick="operation('-')"/> </td>
+<td><input type="button" class="btn btn-success"  value="4" onclick="calculate('4')"/> </td>
+<td><input type="button" class="btn btn-success"   value="5" onclick="calculate('5')"/> </td>
+<td><input type="button" class="btn btn-success"   value="6" onclick="calculate('6')"/> </td>
+</tr>
+<tr>
+<td><input type="button"class="btn btn-success"  value="*" onclick="operation('*')"/> </td>
+<td><input type="button" class="btn btn-success"  value="7" onclick="calculate('7')"/> </td>
+<td><input type="button" class="btn btn-success"   value="8" onclick="calculate('8')"/> </td>
+<td><input type="button" class="btn btn-success"   value="9" onclick="calculate('9')"/> </td>
+</tr>
+<tr>
+<td><input type="button" class="btn btn-success"   value="/" onclick="operation('/')"/> </td>
+<td><input type="button" class="btn btn-success"   value="." onclick="calculate('.')"/> </td>
+<td><input type="button" class="btn btn-success"   value="0" onclick="calculate('0')"/> </td>
+<!-- Evaluating function call eval()-->
+<td><input type="button" class="btn btn-success"    value="=" onclick="operation('=')"/> </td>
+</tr>
+</table>
+<script>
+	var displayVal=0;
+	//secp0nd operand
+	var previousVal=0;
+	//this is first operand
+	var opt='+';
+	var result;
+
+function calculate(operand)
+{
+	/*debugger;*/
+	displayVal+=operand;
+document.getElementById("edu").value=displayVal;
+ }
+//function for evaluation
+function operation(operator){
+	console.log(previousVal);
+	switch(opt){
+		case'+':
+		result=parseInt(parseInt(previousVal) + parseInt(displayVal));
+		document.getElementById("edu").value=result;
+		break;
+		case'-':
+		result=parseInt(parseInt(previousVal) - parseInt(displayVal));
+		document.getElementById("edu").value=result;
+		break;
+		case'/':
+		result=parseInt(parseInt(previousVal) / parseInt(displayVal));
+		document.getElementById("edu").value=result;
+		break;
+		case'*':
+		result=parseInt(parseInt(previousVal) * parseInt(displayVal));
+		document.getElementById("edu").value=result;
+		break;
+		case'=':
+		result=previousVal;
+		document.getElementById("edu").value=result;
+		break;
+		case'c':
+		document.getElementById("edu").value="0";
+		break;
+		default:
+		break;
+}
+displayVal="";
+previousVal=result;
+opt=operator;
+}
+
+</script>
+
+
+ 
+
+</div>
+</center>
+</body>
+</html>
